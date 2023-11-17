@@ -10,6 +10,7 @@ class Quad:
         self.l = y
         self.box= ['rect', a, b , a+self.L, b+self.l]
         self.fils = []
+        self.noeud = False
         self.item = None
             
     def insert(self, item):
@@ -19,7 +20,7 @@ class Quad:
         #print('point__:', item.x, item.y)
         #print('dans___:', hitbox(self.box, ['point', item.x, item.y]))
         if self.item == None:
-            if self.fils == []:
+            if not self.noeud:
                 self.item = item
                 item.cont = self
                 #print('= prend', self.item,'=')
@@ -27,19 +28,21 @@ class Quad:
                 i = (item.x > (self.x + self.L/2)) *2 + (item.y > (self.y + self.l/2))
                 #print('= relai ->', i,'=')
                 self.fils[i].insert(item)
-        else:
+        else:                
             if dis(self.item.x, self.item.y, item.x, item.y)>4:
                 #print('= fils =')
-                self.fils = [Quad(
-                    self,
-                    self.x+(i//2)*(self.L/2),
-                    self.y+(i%2)*(self.l/2),
-                    self.level+1,
-                    self.L/2,
-                    self.l/2,
-                    ) for i in range(4)]
+                if (self.fils == []):
+                    self.fils = [Quad(
+                        self,
+                        self.x+(i//2)*(self.L/2),
+                        self.y+(i%2)*(self.l/2),
+                        self.level+1,
+                        self.L/2,
+                        self.l/2,
+                        ) for i in range(4)]
                 temp_item = self.item
                 self.item = None
+                self.noeud = True
                 self.insert(item)
                 self.insert(temp_item)
             else:
@@ -56,7 +59,7 @@ class Quad:
     
     def recherche(self, zone, item):
         if self.item == None:
-            if self.fils != []:
+            if self.noeud:
                 if hitbox(self.box, zone):
                     for i in range(4):
                         item.append(self.fils[i].recherche(zone, item))
@@ -134,8 +137,8 @@ class Quad:
                         box[3]=di
                         items[0]=self.item
             
-    def delete(self):
+    def refresh(self):
         for i in self.fils:
-            i.delete()
-        self.fils.clear()
+            i.refresh()
         self.item = None
+        self.noeud = False

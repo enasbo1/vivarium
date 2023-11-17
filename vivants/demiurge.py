@@ -63,7 +63,7 @@ class Divin:
                 self.max_gosses=0
             else:
                 self.max_gosses = int(((self.pop_max/len(self.population))**2)*2)
-        self.quad.delete()
+        self.quad.refresh()
     
     def materne(self, animoide1, animoide2):
         libre = True
