@@ -6,7 +6,7 @@ class Cerveau(IA):
         self.potentiel = gene[2]
         self.stats = [i[0]/20 for i in self.potentiel]
         self.etre = etre
-        self.consept = [Consept([self.etre.id_vue], nom = 'simili'), Consept([[0,"n3100","h0000","h0000"]], nom = 'herbi'), Consept([[0,"n2000","h1111","h1111"]], nom = 'tronc'),Consept([[0,"n2000"]+[self.etre.id_vue[i] for i in range(2,4)]], nom = 'bebe')]
+        self.consept = [Consept([self.etre.id_vue], nom = 'simili'), Consept([[0,"n3100","h0006","h9000"]], nom = 'herbi'), Consept([[0,"n2000","h1111","h1111"]], nom = 'tronc'),Consept([[0,"n2000"]+[self.etre.id_vue[i] for i in range(2,4)]], nom = 'bebe')]
         self.consept[0].peur = 0
         self.consept[0].amitie = 1
         self.consept[0].colere = 0

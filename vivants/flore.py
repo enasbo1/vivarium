@@ -32,8 +32,8 @@ class Plantoide(Etroide):
     def tour(self, pas):
         aug = pas*randint(1,6)/60
         if not self.actif:
-            self.id_vue[2] = 'h0000'
-            self.id_vue[3] = 'h0000'
+            self.id_vue[2] = 'h0006'
+            self.id_vue[3] = 'h9000'
             self.calories += aug
             self.poid = self.calories
             self.toile.cnv.itemconfig(self.corp, fill='green')
