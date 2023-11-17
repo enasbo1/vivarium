@@ -19,7 +19,15 @@ class Animoide(Etroide, Competences):
         self.reigne = 'A'
         self.surnom = self.nom
         self.nb_enfant = 0
-        self.id_vue = [0, "n1111", "h2222","h2222"]
+        self.id_vue = [0, "n1111", "h","h"]
+        self.id_vue[2] += str(gene[0][0][0])[0]
+        self.id_vue[2] += str(gene[0][1][0])[0]
+        self.id_vue[2] += str(gene[0][4][0])[0]
+        self.id_vue[2] += str(gene[0][5][0])[0]
+        self.id_vue[3] += str(gene[1][0][0])[0]
+        self.id_vue[3] += str(gene[1][1][0])[0]
+        self.id_vue[3] += str(gene[1][2][0])[0]
+        self.id_vue[3] += str(gene[1][3][0])[0]
         self.reserve=0.1
         self.orga = [Corp(self, gene), Ventre(self, gene), Cerveau(self, gene), Oeuil(self, gene)]
         self.d=randint(-10,12)*pi/10
@@ -35,7 +43,7 @@ class Animoide(Etroide, Competences):
         self.anim = 0
         self.alerte = True
         self.tete = toile.cnv.create_oval(0,0,0,0, fill='black')
-        toile.cnv.itemconfig(self.corp, fill='blue')
+        toile.cnv.itemconfig(self.corp, fill='#%02x%02x%02x' % (int(self.id_vue[2][1:4])*255//999, int((self.id_vue[2][4]+self.id_vue[3][1:3]))*255//999, int(self.id_vue[3][2:5])*255//999))
         for i in self.orga:
             i.actu(0)
         self.age = randint(1, int(self.longevite))

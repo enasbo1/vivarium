@@ -8,7 +8,7 @@ x_cam = 1522
 y_cam = 850
 
 toile=Toile(x_cam, y_cam, x_terrain, y_terrain, title="vivarium", vitesse_lente=2.5)
-createur = Divin(toile, nb_protozoides=300, nb_plantes=800, nb_max = 1300)
+createur = Divin(toile, nb_protozoides=100, nb_plantes=800, nb_max = 1300)
 
 bande=toile.cnv.create_text(x_cam/2, 20, text='0')
 
