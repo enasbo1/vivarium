@@ -1,2 +1,2 @@
 # vivarium
-## this is an evolutive life simulator
+un simulateur de vie évolutive en python
