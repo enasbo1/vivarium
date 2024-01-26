@@ -51,7 +51,7 @@ class Etroide:
         dist = self.toile.x_terrain
         if dist<self.toile.y_terrain:
             dist = self.toile.y_terrain
-        dist = (dist/2)-200
+        dist = int(dist/2)-200
         distance = randint(50,dist)
         self.x = (self.toile.x_terrain/2)-avix(distance, d)+randint(-100,100)+randint(-100,100)
         self.y = (self.toile.y_terrain/2)-aviy(distance, d)+randint(-100,100)+randint(-100,100)
