@@ -56,7 +56,7 @@ class Divin:
                 i.orga[1].mange(self, pas*remplissage)"""
         self.naissances(pas)
         if self.nb_animaux==0:
-            print('==========/!\exinction/!\=========')
+            print('==========/!\\exinction/!\\=========')
             self.toile.end()
         else:
             if len(self.population)>self.pop_max:
